@@ -1,8 +1,23 @@
 ;AHKv2
 
-MsgBox "Make sure you are on bullets and press 2 in game"
+MsgBox "Make sure you are on bullets"
 currentresist := 0
 currentweapon := 0
+toggleresist := 1
+
+XButton2::
+    {
+        if toggleresist == 0
+            {
+                global toggleresist := 1
+                Sleep(100)
+            }
+        else if toggleresist == 1
+            {
+                global toggleresist := 0
+                Sleep(100)
+            }
+    }
 
 
 f5:: 
@@ -52,9 +67,9 @@ r::
             }
     }
 
-XButton2 & 1:: ;THIS IS BULLETS 0
+e:: ;THIS IS BULLETS 0
     {
-        if currentresist == 1 and currentweapon == 2
+        if currentresist == 1 and currentweapon == 2 and toggleresist == 1
             {
                 Send "{-}"
                 Sleep(50)
@@ -62,22 +77,22 @@ XButton2 & 1:: ;THIS IS BULLETS 0
                 global currentresist := 0
             }
 
-        if currentresist == 2 and currentweapon == 2 ;;
+        if currentresist == 2 and currentweapon == 2 and toggleresist == 1 ;;
             {
                 Send "{-}"
                 global currentresist := 0
             }
     }
 
-XButton2 & 2:: ;THIS IS EXPLODE 1
+q:: ;THIS IS EXPLODE 1
     {   
-        if currentresist == 0 and currentweapon == 2 ;;
+        if currentresist == 0 and currentweapon == 2 and toggleresist == 1 ;;
             {
                 Send "{-}"
                 global currentresist := 1
             }
 
-        if currentresist == 2 and currentweapon == 2
+        if currentresist == 2 and currentweapon == 2 and toggleresist == 1
             {
                 Send "{-}"
                 Sleep(50)
@@ -86,9 +101,9 @@ XButton2 & 2:: ;THIS IS EXPLODE 1
             }
     }
 
-XButton2 & 3:: ;THIS IS FIRE 2
+b:: ;THIS IS FIRE 2
     {
-        if currentresist == 0 and currentweapon == 2
+        if currentresist == 0 and currentweapon == 2 and toggleresist == 1
             {
                 Send "{-}"
                 Sleep(50)
@@ -96,7 +111,7 @@ XButton2 & 3:: ;THIS IS FIRE 2
                 global currentresist := 2
             }
 
-        if currentresist == 1 and currentweapon == 2 ;;
+        if currentresist == 1 and currentweapon == 2 and toggleresist == 1 ;;
             {
                 Send "{-}"
                 global currentresist := 2
